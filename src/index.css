@@ -3,37 +3,102 @@
 @tailwind utilities;
 
 @layer base {
-  html { scroll-behavior: smooth; }
-  body {
-    @apply bg-canvas text-white font-sans antialiased;
-    background-image:
-      radial-gradient(1200px 600px at 80% -10%, rgba(124,92,255,0.10), transparent),
-      radial-gradient(900px 400px at -10% 110%, rgba(34,211,238,0.06), transparent);
+  html {
+    scroll-behavior: smooth;
   }
-  ::selection { background: rgba(124,92,255,0.35); color: white; }
+  body {
+    @apply bg-bg text-matrix font-mono antialiased;
+    background-image:
+      radial-gradient(900px 500px at 50% -10%, rgba(0, 255, 65, 0.06), transparent),
+      linear-gradient(180deg, #000 0%, #02060f 100%);
+    text-shadow: 0 0 1px rgba(0, 255, 65, 0.25);
+  }
+  ::selection {
+    background: rgba(0, 255, 65, 0.35);
+    color: #000;
+  }
+  /* CRT scanlines overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 60;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0, 255, 65, 0.02) 0,
+      rgba(0, 255, 65, 0.02) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    mix-blend-mode: screen;
+  }
+  /* subtle vignette */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 61;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+  }
 }
 
 @layer components {
-  .card {
-    @apply rounded-2xl bg-panel border border-line/80 shadow-[0_1px_0_rgba(255,255,255,0.04)_inset];
+  .panel {
+    @apply border border-line/70 bg-panel/60 backdrop-blur-sm;
+  }
+  .panel-hover {
+    @apply panel transition hover:border-matrix/60 hover:shadow-glow-sm;
   }
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition;
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium transition border;
   }
-  .btn-primary { @apply btn bg-accent text-white hover:bg-accent/90; }
-  .btn-ghost { @apply btn bg-transparent text-white/80 hover:text-white hover:bg-white/5 border border-line; }
-  .pill {
-    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  .btn-primary {
+    @apply btn bg-matrix/10 text-matrix border-matrix/60 hover:bg-matrix hover:text-bg hover:shadow-glow;
   }
-  .section { @apply py-20 sm:py-28; }
+  .btn-ghost {
+    @apply btn bg-transparent text-matrix/80 border-line hover:text-matrix hover:border-matrix/60 hover:bg-matrix/5;
+  }
+  .chip {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs border border-line2 text-matrix/80 bg-bg;
+  }
+  .section {
+    @apply py-20 sm:py-28;
+  }
   .section-label {
-    @apply text-xs font-semibold uppercase tracking-[0.18em] text-accent2 mb-3;
+    @apply text-xs uppercase tracking-[0.25em] text-mint mb-2;
   }
-  .h2 { @apply text-3xl sm:text-4xl font-semibold tracking-tight; }
+  .h2 {
+    @apply text-3xl sm:text-4xl font-semibold tracking-tight text-matrix2;
+  }
   .grad-text {
-    @apply bg-gradient-to-r from-accent to-accent2 bg-clip-text text-transparent;
+    background: linear-gradient(90deg, #00ff41 0%, #7cffb2 50%, #00ffa3 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
-  .link-underline {
-    @apply text-white/90 underline decoration-line decoration-2 underline-offset-4 hover:decoration-accent transition;
+  .prompt::before {
+    content: "$ ";
+    color: #00ff41;
+    opacity: 0.6;
   }
+  .arrow::before {
+    content: "> ";
+    color: #00ff41;
+    opacity: 0.7;
+  }
+  .link {
+    @apply text-mint underline decoration-line decoration-2 underline-offset-4 hover:decoration-matrix transition;
+  }
+  .cursor::after {
+    content: "▮";
+    @apply ml-0.5 text-matrix animate-blink;
+  }
+}
+
+/* horizontal marquee group */
+.marquee-track {
+  display: flex;
+  width: max-content;
 }

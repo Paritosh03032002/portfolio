@@ -1,41 +1,40 @@
 import { profile } from "../data/content";
 
 const channels = [
-  { label: "Email", value: profile.email, href: `mailto:${profile.email}`, icon: "✉" },
-  { label: "Phone", value: profile.phone, href: `tel:${profile.phone.replace(/\s|-/g, "")}`, icon: "☎" },
-  { label: "GitHub", value: "Paritosh03032002", href: profile.github, icon: "⌥" },
-  { label: "LinkedIn", value: "paritosh-mayande", href: profile.linkedin, icon: "in" },
+  { key: "email", value: profile.email, href: `mailto:${profile.email}` },
+  { key: "phone", value: profile.phone, href: `tel:${profile.phone.replace(/\s|-/g, "")}` },
+  { key: "github", value: "Paritosh03032002", href: profile.github },
+  { key: "linkedin", value: "paritosh-mayande", href: profile.linkedin },
 ];
 
 export default function Contact() {
   return (
     <section id="contact" className="section">
       <div className="mx-auto max-w-4xl px-6">
-        <div className="section-label">Contact</div>
-        <h2 className="h2 mb-3">Let's build something.</h2>
-        <p className="text-white/70 max-w-2xl mb-10">
-          I'm open to full-time backend and AI engineering roles. The fastest way to reach me is email — I usually reply within a day.
+        <div className="section-label">/ section: contact</div>
+        <h2 className="h2 mb-2 prompt">cat contact.txt</h2>
+        <p className="text-dim text-sm mb-10">
+          // open to full-time backend / AI roles · fastest reply via email
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {channels.map((c) => (
-            <a
-              key={c.label}
-              href={c.href}
-              target={c.href.startsWith("http") ? "_blank" : undefined}
-              rel="noreferrer"
-              className="card p-5 flex items-center gap-4 hover:border-accent/40 transition group"
-            >
-              <span className="w-10 h-10 rounded-lg bg-gradient-to-br from-accent/20 to-accent2/20 grid place-items-center font-mono font-semibold text-accent2">
-                {c.icon}
-              </span>
-              <div className="min-w-0">
-                <div className="text-xs uppercase tracking-wider text-muted">{c.label}</div>
-                <div className="text-sm font-medium truncate group-hover:text-white">{c.value}</div>
-              </div>
-              <span className="ml-auto text-muted group-hover:text-accent transition">↗</span>
-            </a>
-          ))}
+        <div className="panel p-7 font-mono text-sm">
+          <div className="text-dim mb-4">$ ./contact.sh --list</div>
+          <div className="space-y-2">
+            {channels.map((c) => (
+              <a
+                key={c.key}
+                href={c.href}
+                target={c.href.startsWith("http") ? "_blank" : undefined}
+                rel="noreferrer"
+                className="flex items-center gap-4 py-2 px-3 hover:bg-matrix/5 hover:text-matrix transition border border-transparent hover:border-matrix/30 group"
+              >
+                <span className="text-matrix w-20">[{c.key}]</span>
+                <span className="text-mint group-hover:text-matrix flex-1">{c.value}</span>
+                <span className="text-dim group-hover:text-matrix">↗</span>
+              </a>
+            ))}
+          </div>
+          <div className="text-dim mt-6 text-xs">$ _</div>
         </div>
       </div>
     </section>

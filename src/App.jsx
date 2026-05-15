@@ -1,3 +1,4 @@
+import MatrixRain from "./components/MatrixRain";
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -10,8 +11,9 @@ import Footer from "./components/Footer";
 export default function App() {
   return (
     <>
+      <MatrixRain />
       <Nav />
-      <main>
+      <main className="relative">
         <Hero />
         <About />
         <Experience />

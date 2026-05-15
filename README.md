@@ -2,62 +2,57 @@
 
 Personal portfolio site for **Paritosh Mayande**, Backend & AI Engineer.
 
-🔗 Live: _coming soon_
+🔗 **Live:** https://paritosh03032002.github.io/portfolio/
 
 ## Stack
 
-- ⚛️ **React 18** + **TypeScript**
+- ⚛️ **React 18** (JavaScript, no TypeScript)
 - ⚡ **Vite** (dev + build)
 - 🎨 **Tailwind CSS** (custom dark theme, no UI library)
-- 📄 Static site — deploys to Vercel, Netlify, Cloudflare Pages, or GitHub Pages
+- 🚀 **GitHub Pages** deploy via GitHub Actions
 
 ## Run locally
 
 ```bash
 npm install
-npm run dev      # http://localhost:5174
+npm run dev      # http://localhost:5174/portfolio/
 npm run build    # produces dist/
 npm run preview
 ```
 
+## Deploy
+
+This repo auto-deploys to GitHub Pages on every push to `main` via
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
+
+One-time setup in the GitHub UI:
+**Settings → Pages → Build and deployment → Source: GitHub Actions**
+
+After that, just `git push` and the new version is live in ~1 minute.
+
 ## Content
 
-All resume content lives in a single source of truth: [`src/data/content.ts`](src/data/content.ts).
-Update that file to change the site — no component edits needed.
+All resume content lives in a single source of truth:
+[`src/data/content.js`](src/data/content.js) — edit there to update the site.
 
 ## Layout
 
 ```
 src/
-├── App.tsx               # composes the sections
-├── main.tsx
+├── App.jsx               # composes the sections
+├── main.jsx
 ├── index.css             # Tailwind layers + design tokens
-├── data/content.ts       # ⭐ all profile + project + experience data
+├── data/content.js       # ⭐ all profile + project + experience data
 └── components/
-    ├── Nav.tsx           # sticky nav with mobile menu
-    ├── Hero.tsx          # headline + stats
-    ├── About.tsx         # bio + education + certs
-    ├── Experience.tsx    # timeline
-    ├── Projects.tsx      # project cards (Lumen featured)
-    ├── Skills.tsx        # grouped skill chips
-    ├── Contact.tsx       # email / phone / GitHub / LinkedIn
-    └── Footer.tsx
+    ├── Nav.jsx           # sticky nav with mobile menu
+    ├── Hero.jsx          # headline + stats
+    ├── About.jsx         # bio + education + certs
+    ├── Experience.jsx    # timeline
+    ├── Projects.jsx      # project cards (Lumen featured)
+    ├── Skills.jsx        # grouped skill chips
+    ├── Contact.jsx       # email / phone / GitHub / LinkedIn
+    └── Footer.jsx
 ```
-
-## Deploy
-
-### Vercel
-```bash
-npm i -g vercel
-vercel
-```
-
-### GitHub Pages
-1. `npm run build`
-2. Push `dist/` to a `gh-pages` branch, or use `actions-gh-pages`.
-
-### Cloudflare Pages / Netlify
-Drop the repo in, build command `npm run build`, output dir `dist`.
 
 ## License
 

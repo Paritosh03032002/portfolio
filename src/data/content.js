@@ -7,7 +7,7 @@ export const profile = {
   phone: "+91-9343889755",
   github: "https://github.com/Paritosh03032002",
   linkedin: "https://linkedin.com/in/paritosh-mayande",
-  resume: "/paritosh-mayande-resume.pdf",
+  resume: "/portfolio/paritosh-mayande-resume.pdf",
   blurb:
     "Backend & AI Engineer with 1+ year building production Java/Spring Boot REST APIs and Python LLM agent systems. Skilled in LangGraph multi-agent orchestration, RAG pipelines, and Docker microservices. Ship full-stack AI products serving 1,000+ users on AWS/GCP architectures.",
   highlights: [
@@ -18,16 +18,7 @@ export const profile = {
   ],
 };
 
-export type Experience = {
-  company: string;
-  role: string;
-  location: string;
-  period: string;
-  bullets: string[];
-  stack: string[];
-};
-
-export const experience: Experience[] = [
+export const experience = [
   {
     company: "Tipstat",
     role: "Java Full Stack Trainee",
@@ -56,18 +47,7 @@ export const experience: Experience[] = [
   },
 ];
 
-export type Project = {
-  title: string;
-  tagline: string;
-  description: string;
-  bullets: string[];
-  stack: string[];
-  github?: string;
-  live?: string;
-  flagship?: boolean;
-};
-
-export const projects: Project[] = [
+export const projects = [
   {
     title: "Lumen",
     tagline: "Deep Research Platform",

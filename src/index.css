@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-canvas text-white font-sans antialiased;
+    background-image:
+      radial-gradient(1200px 600px at 80% -10%, rgba(124,92,255,0.10), transparent),
+      radial-gradient(900px 400px at -10% 110%, rgba(34,211,238,0.06), transparent);
+  }
+  ::selection { background: rgba(124,92,255,0.35); color: white; }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl bg-panel border border-line/80 shadow-[0_1px_0_rgba(255,255,255,0.04)_inset];
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition;
+  }
+  .btn-primary { @apply btn bg-accent text-white hover:bg-accent/90; }
+  .btn-ghost { @apply btn bg-transparent text-white/80 hover:text-white hover:bg-white/5 border border-line; }
+  .pill {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+  .section { @apply py-20 sm:py-28; }
+  .section-label {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-accent2 mb-3;
+  }
+  .h2 { @apply text-3xl sm:text-4xl font-semibold tracking-tight; }
+  .grad-text {
+    @apply bg-gradient-to-r from-accent to-accent2 bg-clip-text text-transparent;
+  }
+  .link-underline {
+    @apply text-white/90 underline decoration-line decoration-2 underline-offset-4 hover:decoration-accent transition;
+  }
+}
